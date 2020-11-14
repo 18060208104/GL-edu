@@ -9,14 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service_base</artifactId>
-<!--引入common_utils依赖  因为在在这个模块的全局异常处理时用到了common模块中的 结果返回R -->
-    <dependencies>
-        <dependency>
-            <groupId>com.feng</groupId>
-            <artifactId>common_utils</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
+    <artifactId>common_utils</artifactId>
+
 
 </project>
