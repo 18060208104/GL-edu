@@ -6,7 +6,6 @@ export default {
         return request({
             //url: '/eduservice/teacher/pageTeacherCondition/'+current+"/"+limit,
              url: `/eduservice/teacher/pageTeacherCondition/${current}/${limit}`,
-           // url: `/eduservice/teacher/condition/${current}/${limit}`,
             method: 'post',
             //teacherQuery条件对象，后端使用RequestBody获取数据
             //data表示把对象转换json进行传递到接口里面
@@ -15,11 +14,31 @@ export default {
     },
     deleteTeacherId(id){
         return request({
-             url: `/eduservice/teacher/${id}`,
-       
-            method: 'delete'
-          
+             url: `/eduservice/teacher/${id}`,      
+            method: 'delete'          
           })
-    }
+    },
+    addTeacher(teacher){
+        return request({
+            url: `/eduservice/teacher/addTeacher`,      
+            method: 'post', 
+            data: teacher  //采用了RequestBody  传递参数
+        })
+    },
+   
+   
+    updateTeacherInfo(teacher){
+        return request({
+            url: `/eduservice/teacher/updateTeacher`,      
+            method: 'post', 
+            data: teacher  //采用了RequestBody  传递参数
+        })
+    } ,getTeacherInfo(id){
+        return request({
+            url: `/eduservice/teacher/getTeacher/${id}`,      
+            method: 'get'      
+        })
+
+    } 
 
 }
