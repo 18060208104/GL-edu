@@ -25,20 +25,21 @@ export default {
             data: teacher  //采用了RequestBody  传递参数
         })
     },
-   
-   
+   //根据id得到讲师
+    getTeacherInfo(id){
+        return request({
+            url: `/eduservice/teacher/getTeacher/${id}`,      
+            method: 'get'      
+        })
+
+    } ,
+    //修改讲师
     updateTeacherInfo(teacher){
         return request({
             url: `/eduservice/teacher/updateTeacher`,      
             method: 'post', 
             data: teacher  //采用了RequestBody  传递参数
         })
-    } ,getTeacherInfo(id){
-        return request({
-            url: `/eduservice/teacher/getTeacher/${id}`,      
-            method: 'get'      
-        })
-
-    } 
+    }
 
 }
