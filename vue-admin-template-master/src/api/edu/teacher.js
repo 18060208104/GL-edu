@@ -41,5 +41,4 @@ export default {
             data: teacher  //采用了RequestBody  传递参数
         })
     }
-
 }
