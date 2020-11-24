@@ -2,6 +2,7 @@ package com.feng.eduservice.service;
 
 import com.feng.eduservice.entity.EduCourse;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.feng.eduservice.entity.vo.CoursePublishVo;
 import com.feng.eduservice.entity.vo.CourseinfoVo;
 
 /**
@@ -15,4 +16,11 @@ import com.feng.eduservice.entity.vo.CourseinfoVo;
 public interface EduCourseService extends IService<EduCourse> {
 
     String saveCourseInfo(CourseinfoVo courseinfoVo);
+
+    void updateCourseInfo(CourseinfoVo courseInfoVo);
+
+    CourseinfoVo getCourseInfo(String courseId);
+
+    CoursePublishVo getfinalpublishinfo(String courseId);
+
 }
