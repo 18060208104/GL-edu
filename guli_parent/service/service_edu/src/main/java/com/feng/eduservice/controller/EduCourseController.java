@@ -112,6 +112,16 @@ public class EduCourseController {
         return R.ok().data("total",total).data("rows",records);
     }
 
+    //课程的删除
+    @DeleteMapping("{courseId}")
+    public R deletecoursebycourseid(@PathVariable String courseId){
+        boolean flag=courseService.deletecourse(courseId);
+        if(flag)
+            return R.ok();
+        else
+            return R.error();
+    }
+
 
 }
 

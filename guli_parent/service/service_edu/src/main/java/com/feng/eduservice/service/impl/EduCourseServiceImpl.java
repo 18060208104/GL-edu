@@ -5,9 +5,11 @@ import com.feng.eduservice.entity.EduCourseDescription;
 import com.feng.eduservice.entity.vo.CoursePublishVo;
 import com.feng.eduservice.entity.vo.CourseinfoVo;
 import com.feng.eduservice.mapper.EduCourseMapper;
+import com.feng.eduservice.service.EduChapterService;
 import com.feng.eduservice.service.EduCourseDescriptionService;
 import com.feng.eduservice.service.EduCourseService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.feng.eduservice.service.EduVideoService;
 import com.feng.servicebase.exceptionhandler.GuliException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,10 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Autowired
    private EduCourseDescriptionService eduCourseDescriptionService;
+    @Autowired
+    private EduVideoService videoService;
+    @Autowired
+    private EduChapterService chapterService;
     @Override
     public String saveCourseInfo(CourseinfoVo courseinfoVo) {
    //向课程中添加课程基本信息
@@ -86,4 +92,17 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     public CoursePublishVo getfinalpublishinfo(String courseId) {
      return  baseMapper.getfinalpublishinfo(courseId);
     }
+    //根据课程id删除课程
+    @Override
+    public boolean deletecourse(String courseId) {
+    // 1.课程id删除小节
+        videoService.deletevideo(courseId);
+    // 2.课程id删除章节
+        chapterService.delechapter(courseId);
+    // 3.课程id删除描述  由于是1对1可以直接根据courseid删除
+        eduCourseDescriptionService.removeById(courseId);
+    // 4.删除课程
+        int res=baseMapper.deleteById(courseId);
+      return res>0;
+        }
 }

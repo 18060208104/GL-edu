@@ -10,8 +10,8 @@
 
       <el-form-item>
         <el-select v-model="courseQuery.status" clearable placeholder="发布状态">
-          <el-option :value="Normal" label="已发布"/>
-          <el-option :value="Draft" label="未发布"/>        
+          <el-option value="Normal" label="已发布"/>
+          <el-option value="Draft" label="未发布"/>        
         </el-select>
       </el-form-item>
        
@@ -55,7 +55,7 @@
           <router-link :to="'/teacher/edit/'+scope.row.id">
             <el-button type="primary" size="mini" icon="el-icon-edit">修改</el-button>
           </router-link>
-          <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">删除</el-button>
+          <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">删除课程</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -69,7 +69,7 @@
       layout="total, prev, pager, next, jumper"
       @current-change="getList"   
     />    <!-- 在进行上一页下一页的时候需要调用这个方法来传值 -->
-      </el-form> 
+    
   </div>
        
 </template>
@@ -111,7 +111,28 @@ export default {
             this.courseQuery = {}    //因为表单和这个查询对象是双向绑定  清空时只用清空这个对象
             //查询所有讲师数据
             this.getList()
+        },
+         //删除课程的方法
+        removeDataById(id) {
+            this.$confirm('此操作将永久删除讲师记录, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {  //点击确定，执行then方法
+                //调用删除的方法
+               course.deleteCoursebyId(id)
+                    .then(response =>{//删除成功
+                    //提示信息
+                    this.$message({
+                        type: 'success',
+                        message: '删除成功!'
+                    });
+                    //回到列表页面
+                    this.getList()
+                })
+            }) //点击取消，执行catch方法
         }
+  
   
     }
 }

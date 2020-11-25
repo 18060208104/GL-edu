@@ -23,4 +23,5 @@ public interface EduCourseService extends IService<EduCourse> {
 
     CoursePublishVo getfinalpublishinfo(String courseId);
 
+    boolean deletecourse(String courseId);
 }
