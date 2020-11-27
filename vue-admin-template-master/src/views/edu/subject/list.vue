@@ -39,7 +39,7 @@ export default {
 
   methods: {
     getAllSubjectList() {
-        subject.getAllsubject()
+        subject.getSubjectList()
             .then(response => {
                 this.data2 = response.data.list
                 console.log(response)

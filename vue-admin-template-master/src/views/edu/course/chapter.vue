@@ -150,7 +150,30 @@ export default {
     methods:{
         //==============================视频上传====================================
 
-        //成功回调
+        //点击确定调用的方法
+        handleVodRemove() {
+            //调用接口的删除视频的方法
+            video.deleteAliyunvod(this.video.videoSourceId)
+                .then(response => {
+                    //提示信息
+                    this.$message({
+                        type: 'success',
+                        message: '删除视频成功!'
+                    });
+                    //把文件列表清空
+                    this.fileList = []
+                    //把video视频id和视频名称值清空
+                    //上传视频id赋值
+                    this.video.videoSourceId = ''
+                    //上传视频名称赋值
+                    this.video.videoOriginalName = ''
+                })
+        },
+        //点击×调用这个方法
+        beforeVodRemove(file,fileList) {
+            return this.$confirm(`确定移除 ${ file.name }？`);
+        },
+       //成功回调
        handleVodUploadSuccess(response, file, fileList) {
            //上传视频id赋值  加入数据库
            this.video.videoSourceId = response.data.videoId
