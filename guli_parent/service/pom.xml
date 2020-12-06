@@ -15,6 +15,7 @@
         <module>service_edu</module>
         <module>service_vod</module>
         <module>edu_oss</module>
+        <module>service_cms</module>
     </modules>
     <dependencies>
 <!--        引入service——base的依赖  在service层可以使用common下的service——base-->
