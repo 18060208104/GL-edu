@@ -17,6 +17,9 @@
         <module>edu_oss</module>
         <module>service_cms</module>
         <module>service_msm</module>
+        <module>service_ucenter</module>
+
+
     </modules>
     <dependencies>
 <!--        引入service——base的依赖  在service层可以使用common下的service——base-->
