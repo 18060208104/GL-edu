@@ -1,4 +1,4 @@
-package com.feng.commonutils;
+package com.feng.educenter.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

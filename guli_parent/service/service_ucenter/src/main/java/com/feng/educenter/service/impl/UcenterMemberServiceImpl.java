@@ -2,7 +2,7 @@ package com.feng.educenter.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.feng.commonutils.JwtUtils;
-import com.feng.commonutils.MD5;
+import com.feng.educenter.utils.MD5;
 import com.feng.educenter.entity.UcenterMember;
 import com.feng.educenter.entity.vo.RegisterVo;
 import com.feng.educenter.mapper.UcenterMemberMapper;
@@ -106,6 +106,14 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
 
         member.setAvatar("http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoj0hHXhgJNOTSOFsS4uZs8x1ConecaVOB8eIl115xmJZcT4oCicvia7wMEufibKtTLqiaJeanU2Lpg3w/132");
         baseMapper.insert(member);
+    }
+    //根据openid判断
+    @Override
+    public UcenterMember getOpenIdMember(String openid) {
+        QueryWrapper<UcenterMember> wrapper = new QueryWrapper<>();
+        wrapper.eq("openid",openid);
+        UcenterMember member = baseMapper.selectOne(wrapper);
+        return member;
     }
 }
 
