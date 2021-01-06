@@ -5,6 +5,8 @@ import com.feng.eduservice.entity.EduTeacher;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.feng.eduservice.entity.vo.TeacherQuery;
 
+import java.util.Map;
+
 /**
  * <p>
  * 讲师 服务类
@@ -15,4 +17,6 @@ import com.feng.eduservice.entity.vo.TeacherQuery;
  */
 public interface EduTeacherService extends IService<EduTeacher> {
     void pageQuery(Page<EduTeacher> pageParm, TeacherQuery teacherQuery);
+
+    Map<String, Object> getTeacherFrontList(Page<EduTeacher> pageTeacher);
 }

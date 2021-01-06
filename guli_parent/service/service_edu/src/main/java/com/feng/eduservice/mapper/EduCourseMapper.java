@@ -2,6 +2,7 @@ package com.feng.eduservice.mapper;
 
 import com.feng.eduservice.entity.EduCourse;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.feng.eduservice.entity.front.CourseWebVo;
 import com.feng.eduservice.entity.vo.CoursePublishVo;
 
 /**
@@ -15,4 +16,6 @@ import com.feng.eduservice.entity.vo.CoursePublishVo;
 public interface EduCourseMapper extends BaseMapper<EduCourse> {
     //根据课程id查询出所需要显示的最终发布信息
     public CoursePublishVo getfinalpublishinfo(String courseId);
+    //根据课程id，编写sql语句查询课程信息
+    CourseWebVo getBaseCourseInfo(String courseId);
 }
