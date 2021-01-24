@@ -1,10 +1,8 @@
-package com.feng.educms.entity;
+package com.feng.aclservice.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
-
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -15,39 +13,46 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 首页banner表
+ * 用户表
  * </p>
  *
- * @author feng
- * @since 2020-12-05
+ * @author testjava
+ * @since 2020-01-12
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="CrmBanner对象", description="首页banner表")
-public class CrmBanner implements Serializable {
+@TableName("acl_user")
+@ApiModel(value="User对象", description="用户表")
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "ID")
+    @ApiModelProperty(value = "会员id")
     @TableId(value = "id", type = IdType.ID_WORKER_STR)
     private String id;
 
-    @ApiModelProperty(value = "图片地址")
-    private String imageUrl;
+    @ApiModelProperty(value = "微信openid")
+    private String username;
 
-    @ApiModelProperty(value = "链接地址")
-    private String linkUrl;
+    @ApiModelProperty(value = "密码")
+    private String password;
 
-    @ApiModelProperty(value = "排序")
-    private Integer sort;
+    @ApiModelProperty(value = "昵称")
+    private String nickName;
+
+    @ApiModelProperty(value = "用户头像")
+    private String salt;
+
+    @ApiModelProperty(value = "用户签名")
+    private String token;
 
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
     private Boolean isDeleted;
-    @TableField(fill = FieldFill.INSERT)
+
     @ApiModelProperty(value = "创建时间")
     private Date gmtCreate;
-    @TableField(fill = FieldFill.INSERT_UPDATE)//自动填充
+
     @ApiModelProperty(value = "更新时间")
     private Date gmtModified;
 

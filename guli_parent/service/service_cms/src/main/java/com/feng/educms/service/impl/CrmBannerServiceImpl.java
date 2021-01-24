@@ -29,7 +29,7 @@ public class CrmBannerServiceImpl extends ServiceImpl<CrmBannerMapper, CrmBanner
 
         //根据id进行降序排列，显示排列之后前两条记录
         QueryWrapper<CrmBanner> wrapper = new QueryWrapper<>();
-        wrapper.orderByDesc("id");
+        wrapper.orderByAsc("id");
         //last方法，拼接sql语句
         wrapper.last("limit 2");
         List<CrmBanner> list = baseMapper.selectList(null);
